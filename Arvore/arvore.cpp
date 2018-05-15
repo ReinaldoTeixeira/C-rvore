@@ -1,6 +1,7 @@
 #include <iostream>
 #include "arvore.h"
 #include <cstdlib>
+#include <queue>
 
 using namespace std;
 
@@ -70,8 +71,24 @@ void exibirPosOrdem(No*raiz){
 	
 }
 
+void exibirPorNivel (No*raiz){ //nessa situação criamos uma lista para trabalhar com FIFO, sendo que vamos colocar nossos elementos nessa lista para apresentar eles por 
+								//niveis. 
+	
+	queue<No*> fila;
+	fila.push(raiz);
+	while(!fila.empty()){
+		
+		No *aux =  fila.front();
+		cout << aux->elemento << endl; 
+		if(aux->ESQ != NULL) fila.push(aux->ESQ);
+		if(aux->DIR != NULL) fila.push(aux->DIR);
+		fila.pop();		
+	}	
+}
+
 void Arvore::exibir(){
 	
-		exibirPreOrdem(this->raiz);
+		exibirPorNivel(this->raiz);
 	
 }
+

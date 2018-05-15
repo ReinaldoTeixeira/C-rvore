@@ -17,6 +17,7 @@ struct Arvore{
 	void exibir();
 	void inserir(int elemento);
 	
+	
 };
 
 #endif
