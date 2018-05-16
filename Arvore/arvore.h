@@ -16,6 +16,7 @@ struct Arvore{
 	void inicializar();
 	void exibir();
 	void inserir(int elemento);
+	void remover(int elemento);
 	
 	
 };

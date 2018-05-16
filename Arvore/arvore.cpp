@@ -92,3 +92,99 @@ void Arvore::exibir(){
 	
 }
 
+No* removeNO (No *no){
+	
+	if(no->ESQ == NULL && no->DIR == NULL){
+		
+		free(no);
+		return NULL;
+		
+	}	
+	
+	if(no->DIR != NULL && no->ESQ == NULL){
+		
+		No *aux = no->DIR;
+		free(no);
+		return aux;
+	}
+	
+	if(no->ESQ != NULL && no->DIR == NULL){
+		
+		No *aux = no->ESQ;
+		free(no);
+		return aux;
+		
+	}
+	
+	No *novo = no->ESQ;
+	No *pai = no;
+	
+	while(novo->DIR != NULL){
+		
+		pai = novo;
+		novo = novo->DIR;
+		
+	}
+	
+	if(pai != no){
+	
+		pai->DIR = novo->ESQ;
+		novo->ESQ = no->ESQ;
+		novo->DIR = no->DIR;
+		free(no);
+		return novo;
+		
+	}
+	
+	else{
+		
+		novo->DIR = no->DIR;
+		free(no);
+		return novo;
+		
+	}
+	
+	}
+	
+
+void Arvore::remover(int elemento){
+	
+	No *pai = NULL;
+	No *no = raiz;
+	
+	while(no != NULL){
+		if(no->elemento == elemento){
+			if(no == raiz){
+				raiz = removeNO(no);
+			}
+			else{
+				
+				if(pai->ESQ == no)
+					pai->ESQ =  removeNO(no);
+				else
+					pai->DIR = removeNO(no);
+		}
+		return;
+				
+			}
+		else{
+			if(elemento < no->elemento){
+				pai = no;
+				no = no->ESQ;
+			}
+			else{
+				pai = no;
+				no = no->DIR;
+				
+			}
+			
+		}
+			
+			
+		}
+		
+		
+	}
+	
+
+

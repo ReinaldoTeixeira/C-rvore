@@ -14,5 +14,10 @@ int main() {
 	
 	a.exibir();
 	
+	a.remover(45);
+	
+	cout << endl << endl;
+	
+	a.exibir();
 
 }
